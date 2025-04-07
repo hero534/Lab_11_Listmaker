@@ -67,16 +67,9 @@ public class Main {
     }
 
     private static void insertItem() {
-        if (list.isEmpty()) {
-            System.out.println("List is empty. Adding item at the beginning.");
-            addItem();
-            return;
-        }
-        displayNumberedList();
-        int locationNumber = SafeInput.getRangedInt(in, "Enter location to insert at: ", 1, list.size() + 1);
-        System.out.print("Enter item to insert: ");
-        String item = in.nextLine();
-        list.add(locationNumber - 1, item);
+        String item = SafeInput.getNonZeroLenString(in, "Enter item to insert: ");
+        int index = SafeInput.getRangedInt(in, "Enter position to insert at: ", 1, list.size() + 1);
+        list.add(index - 1, item);
         System.out.println("Item inserted.");
     }
 
